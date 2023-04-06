@@ -1,5 +1,6 @@
 import 'package:callories/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Hello extends StatelessWidget {
   const Hello({super.key});
@@ -27,9 +28,8 @@ class Hello extends StatelessWidget {
                 ),
               ),
               Positioned( top: 100, left: width*0.23,
-                child: Image(
-                  image: AssetImage("images/hello.png"),
-                ),
+                child: SvgPicture.asset("images/hello.svg"),
+                
               )
             ],
           ),
