@@ -1,4 +1,5 @@
 import 'package:callories/global.dart';
+import 'package:callories/timetable.dart';
 import 'package:flutter/material.dart';
 
 class Auth extends StatefulWidget {
@@ -13,6 +14,7 @@ class _AuthState extends State<Auth> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    bool isSelected = false;
     return Scaffold(
       backgroundColor: lightGreen,
       appBar: AppBar(
@@ -30,65 +32,61 @@ class _AuthState extends State<Auth> {
       ),
       body: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 15),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: width * 0.06),
-                    child: const Text(
-                      "Как Вас зовут",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-                    ),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: width * 0.06),
+                  child: const Text(
+                    "Как Вас зовут",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
-                  Container(
-                    width: width * 0.9,
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      maxLength: 12,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(color: Colors.amber),
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 25),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                          ),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
+                ),
+                Container(
+                  width: width * 0.9,
+                  padding: const EdgeInsets.only(top: 10),
+                  child: TextField(
+                    maxLength: 12,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 25),
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
                         ),
-                        errorBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 2,
-                            color: Colors.red,
-                          ),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            width: 2,
-                            color: green,
-                          ),
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30)),
-                        ),
-                        labelText: 'Ваше имя',
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
                       ),
+                      errorBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 2,
+                          color: Colors.red,
+                        ),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 2,
+                          color: green,
+                        ),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                      ),
+                      labelText: 'Ваше имя',
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Center(
@@ -205,34 +203,96 @@ class _AuthState extends State<Auth> {
               ],
             ),
           ),
+          Row(
+            children: [
+               GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelected = !isSelected;
+                  });
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  decoration: BoxDecoration(
+                    color: green,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.elliptical(30, 30),
+                      bottomRight: Radius.elliptical(30, 30),
+                    ),
+                  ),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "М",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isSelected = !isSelected;
+                  });
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.elliptical(30, 30),
+                      bottomRight: Radius.elliptical(30, 30),
+                    ),
+                  ),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "Ж",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.only(top: 200),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Auth()),
+                  MaterialPageRoute(builder: (context) => const TimeTable()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: Ink(
-                decoration: BoxDecoration(
-                    color: green, borderRadius: BorderRadius.circular(20)),
-                child: Container(
-                  width: width * 0.7,
-                  height: 50,
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Далее",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                  ),
+                backgroundColor: green,
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Container(
+                width: width * 0.7,
+                height: 50,
+                alignment: Alignment.center,
+                child: const Text(
+                  "Далее",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

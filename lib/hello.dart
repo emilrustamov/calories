@@ -23,7 +23,7 @@ class Hello extends StatelessWidget {
                   width: 400,
                   decoration: BoxDecoration(
                     color: lightGreen,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.elliptical(150, 100),
                       bottomRight: Radius.elliptical(150, 100),
                     ),
@@ -53,34 +53,33 @@ class Hello extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
+         Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Auth()),
+                  MaterialPageRoute(builder: (context) => const Auth()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: Ink(
-                decoration: BoxDecoration(
-                    color: green, borderRadius: BorderRadius.circular(20)),
-                child: Container(
-                  width: width * 0.7,
-                  height: 50,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Начать",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                  ),
+                backgroundColor: green,
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: Container(
+                width: width * 0.7,
+                height: 50,
+                alignment: Alignment.center,
+                child: const Text(
+                  "Начать",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
