@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.4
   syncfusion_flutter_charts: ^21.1.38
+  search_page: ^2.3.0
+  accordion: ^2.5.1
 
 dev_dependencies:
   flutter_test:

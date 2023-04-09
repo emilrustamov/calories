@@ -1,5 +1,6 @@
 import 'package:callories/global.dart';
 import 'package:callories/timetable.dart';
+import 'package:callories/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class Auth extends StatefulWidget {
@@ -153,37 +154,13 @@ class _AuthState extends State<Auth> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 200),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>  const TimeTable()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: green,
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: Container(
-                width: w * 0.7,
-                height: 50,
-                alignment: Alignment.center,
-                child: const Text(
-                  "Далее",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-          ),
+          Button(context, w, TimeTable(), "Далее"),
         ],
       ),
     );
   }
+
+  
 
   InputDecoration inputTextfield(String textlabel) {
     return InputDecoration(

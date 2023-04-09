@@ -1,4 +1,5 @@
 import 'package:callories/global.dart';
+import 'package:callories/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -56,33 +57,7 @@ class Hello extends StatelessWidget {
               ),
             ],
           ),
-         Padding(
-            padding: const EdgeInsets.only(top:120),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Auth()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: green,
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: Container(
-                width: w * 0.7,
-                height: 50,
-                alignment: Alignment.center,
-                child: const Text(
-                  "Начать",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-          ),
+         Button(context, w, Auth(), "Начать")
         ],
       ),
     );

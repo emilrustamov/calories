@@ -1,4 +1,5 @@
 import 'package:callories/global.dart';
+import 'package:callories/zapis.dart';
 import 'package:callories/widgets/blueCard.dart';
 import 'package:callories/widgets/longCard.dart';
 import 'package:callories/widgets/smallButton.dart';
@@ -26,13 +27,12 @@ class _TimeTableState extends State<TimeTable> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    List<String>.generate(10000, (i) => 'Item $i');
     return MaterialApp(
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
+            preferredSize: const Size.fromHeight(80.0),
             child: SafeArea(
               child: Expanded(
                 child: TabBar(
@@ -42,7 +42,9 @@ class _TimeTableState extends State<TimeTable> {
                     Tab(
                       text: "ОБЗОР",
                     ),
-                    Tab(text: "ПИТАНИЕ"),
+                    Tab(
+                      text: "ПИТАНИЕ",
+                    ),
                   ],
                 ),
               ),
@@ -98,8 +100,15 @@ class _TimeTableState extends State<TimeTable> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        blueCard(w, 'Вес'),
-                        blueCard(w, "не вес"),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: blueCard(w, "Вес"),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -138,12 +147,11 @@ class _TimeTableState extends State<TimeTable> {
                           children: [
                             SizedBox(
                               width: w * 0.25,
-                              height: 100,
+                              height: h* 0.1,
                               child: Stack(
                                 children: <Widget>[
                                   SfCircularChart(
                                     series: <CircularSeries>[
-                                      // Renders radial bar chart
                                       RadialBarSeries<GDPData, String>(
                                           useSeriesColor: true,
                                           trackOpacity: 0,
@@ -154,7 +162,7 @@ class _TimeTableState extends State<TimeTable> {
                                               data.gdp,
                                           pointColorMapper: (GDPData data, _) =>
                                               data.calor,
-                                          dataLabelSettings: DataLabelSettings(
+                                          dataLabelSettings: const DataLabelSettings(
                                               labelPosition:
                                                   ChartDataLabelPosition.inside,
                                               isVisible: true,
@@ -175,7 +183,9 @@ class _TimeTableState extends State<TimeTable> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(
+                      top: 20.0,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -189,7 +199,7 @@ class _TimeTableState extends State<TimeTable> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        longCard(w, h, "Углеводы", "images/meat.svg"),
+                        longCard(w, h, "Углеводы", "images/milk.svg"),
                         smallCard(w, h, "Белки", "images/milk.svg"),
                       ],
                     ),
@@ -197,23 +207,35 @@ class _TimeTableState extends State<TimeTable> {
                 ],
               ),
               ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("data"), smallButton()],
-                      ),
+                itemCount: 10,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const zapis()),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: lightGreen),
+                          color: superlightGreen),
                       width: w * 0.9,
-                      height: 64,
+                      height: h* 0.09,
                       margin: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 16),
-                    );
-                  }),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Прием пищи $index"),
+                          smallButton(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -222,6 +244,7 @@ class _TimeTableState extends State<TimeTable> {
   }
 
   List<GDPData> getChartData() {
+    // ignore: non_constant_identifier_names
     final List<GDPData> ChartData = [
       GDPData('A', 78, green),
     ];
