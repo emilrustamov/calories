@@ -39,11 +39,14 @@ class Hello extends StatelessWidget {
           ),
           Column(
             children: [
-              Text(
-                "Управляй своим \n питанием с легкостью!",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700, fontSize: 25, color: black),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Text(
+                  "Управляй своим \n питанием с легкостью!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700, fontSize: 25, color: black),
+                ),
               ),
               Text(
                 "Точный подсчет калорий с \n нашим приложением.",
@@ -54,7 +57,7 @@ class Hello extends StatelessWidget {
             ],
           ),
          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.only(top:120),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(
