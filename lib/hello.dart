@@ -9,8 +9,8 @@ class Hello extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
@@ -19,8 +19,8 @@ class Hello extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: 390,
-                  width: 400,
+                  height: h* 0.5,
+                  width: w * 1,
                   decoration: BoxDecoration(
                     color: lightGreen,
                     borderRadius: const BorderRadius.only(
@@ -31,7 +31,7 @@ class Hello extends StatelessWidget {
                 ),
                 Positioned(
                   top: 100,
-                  left: width * 0.23,
+                  left: w * 0.23,
                   child: SvgPicture.asset("images/hello.svg"),
                 )
               ],
@@ -73,7 +73,7 @@ class Hello extends StatelessWidget {
                 ),
               ),
               child: Container(
-                width: width * 0.7,
+                width: w * 0.7,
                 height: 50,
                 alignment: Alignment.center,
                 child: const Text(

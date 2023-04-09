@@ -12,8 +12,8 @@ class Auth extends StatefulWidget {
 class _AuthState extends State<Auth> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     bool isSelected = false;
     return Scaffold(
       backgroundColor: lightGreen,
@@ -37,7 +37,7 @@ class _AuthState extends State<Auth> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: width * 0.06),
+                  padding: EdgeInsets.only(left: w * 0.06),
                   child: const Text(
                     "Как Вас зовут",
                     style:
@@ -45,45 +45,12 @@ class _AuthState extends State<Auth> {
                   ),
                 ),
                 Container(
-                  width: width * 0.9,
+                  width: w * 0.9,
                   padding: const EdgeInsets.only(top: 10),
                   child: TextField(
                     maxLength: 12,
                     obscureText: false,
-                    decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 25),
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      errorBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: Colors.red,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: green,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      labelText: 'Ваше имя',
-                    ),
+                    decoration: inputTextfield("Ваше имя")
                   ),
                 ),
               ],
@@ -94,53 +61,20 @@ class _AuthState extends State<Auth> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: width * 0.06),
+                  padding: EdgeInsets.only(left: w * 0.06),
                   child: const Text(
                     "Какой у Вас рост?",
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
                 ),
                 Container(
-                  width: width * 0.9,
+                  width: w * 0.9,
                   padding: const EdgeInsets.only(top: 10),
                   child: TextField(
                     keyboardType: TextInputType.number,
                     maxLength: 3,
                     obscureText: false,
-                    decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 25),
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      errorBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: Colors.red,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: green,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      labelText: '175см',
-                    ),
+                    decoration: inputTextfield("175см"),
                   ),
                 ),
               ],
@@ -151,53 +85,20 @@ class _AuthState extends State<Auth> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.only(left: width * 0.06),
+                  padding: EdgeInsets.only(left: w * 0.06),
                   child: const Text(
                     "Какой у Вас вес?",
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
                 ),
                 Container(
-                  width: width * 0.9,
+                  width: w * 0.9,
                   padding: const EdgeInsets.only(top: 10),
                   child: TextField(
                     keyboardType: TextInputType.number,
                     maxLength: 3,
                     obscureText: false,
-                    decoration: InputDecoration(
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 25),
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      errorBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: Colors.red,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: 2,
-                          color: green,
-                        ),
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      labelText: '75кг',
-                    ),
+                    decoration: inputTextfield("75кг")
                   ),
                 ),
               ],
@@ -205,62 +106,48 @@ class _AuthState extends State<Auth> {
           ),
           Row(
             children: [
-               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSelected = !isSelected;
-                  });
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  margin: EdgeInsets.only(left: 20, right: 20),
-                  decoration: BoxDecoration(
-                    color: green,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.elliptical(30, 30),
-                      bottomRight: Radius.elliptical(30, 30),
-                    ),
-                  ),
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "М",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white),
-                    ),
+               Container(
+                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                 margin: const EdgeInsets.only(left: 20, right: 20),
+                 decoration: BoxDecoration(
+                   color: green,
+                   borderRadius: const BorderRadius.only(
+                     topLeft: Radius.elliptical(30, 30),
+                     bottomRight: Radius.elliptical(30, 30),
+                   ),
+                 ),
+                 child: Container(
+                   width: w* 0.13,
+                   height: 50,
+                   alignment: Alignment.center,
+                   child: const Text(
+                     "М",
+                     style: TextStyle(
+                         fontSize: 16,
+                         fontWeight: FontWeight.w400,
+                         color: Colors.white),
+                   ),
+                 ),
+               ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.elliptical(30, 30),
+                    bottomRight: Radius.elliptical(30, 30),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isSelected = !isSelected;
-                  });
-                },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.elliptical(30, 30),
-                      bottomRight: Radius.elliptical(30, 30),
-                    ),
-                  ),
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Ж",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
-                    ),
+                  width: 50,
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Ж",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black),
                   ),
                 ),
               ),
@@ -272,7 +159,7 @@ class _AuthState extends State<Auth> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TimeTable()),
+                  MaterialPageRoute(builder: (context) =>  const TimeTable()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -283,7 +170,7 @@ class _AuthState extends State<Auth> {
                 ),
               ),
               child: Container(
-                width: width * 0.7,
+                width: w * 0.7,
                 height: 50,
                 alignment: Alignment.center,
                 child: const Text(
@@ -296,5 +183,42 @@ class _AuthState extends State<Auth> {
         ],
       ),
     );
+  }
+
+  InputDecoration inputTextfield(String textlabel) {
+    return InputDecoration(
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 25),
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                    ),
+                    errorBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: Colors.red,
+                      ),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 2,
+                        color: green,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                    ),
+                    labelText: textlabel,
+                  );
   }
 }

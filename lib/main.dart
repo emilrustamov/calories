@@ -1,5 +1,4 @@
 import 'package:callories/hello.dart';
-import 'package:callories/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       statusBarColor: superlightGreen,
     ));
     return const MaterialApp(
-      home: View(),
+      home: Hello(),
     );
   }
 }

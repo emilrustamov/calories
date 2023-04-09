@@ -7,3 +7,4 @@ Color lightBlue = Color.fromRGBO(115, 170, 255, 0.2);
 Color blue = Color(0xff3AAFF);
 Color black = Color(0xff35383F);
 Color lightBlack = Color.fromRGBO(53, 56, 63, 0.9);
+
