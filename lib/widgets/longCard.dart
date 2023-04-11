@@ -2,21 +2,21 @@ import 'package:callories/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Container longCard(double width, double height, String header, String imglink) {
+Container longCard(double w, double h, String header, String imglink) {
   return Container(
-    width: width * 0.5,
-    height: height * 0.15,
+    width: w * 0.5,
+    height: h * 0.15,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20), color: lightGreen),
     child: Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 9, left: 11),
+          padding: EdgeInsets.only(top: h * 0.01, left: w * 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
+                padding: EdgeInsets.only(bottom: h * 0.006),
                 child: Text(
                   header,
                   style: TextStyle(
@@ -32,7 +32,7 @@ Container longCard(double width, double height, String header, String imglink) {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 9, left: 50),
+          padding: EdgeInsets.only(top: h * 0.01, left: w * 0.13),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -44,8 +44,9 @@ Container longCard(double width, double height, String header, String imglink) {
                       color: darkGreen)),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Align(alignment: Alignment.bottomRight,
+                  padding: EdgeInsets.only(bottom: h * 0.01),
+                  child: Align(
+                    alignment: Alignment.bottomRight,
                     child: SvgPicture.asset(imglink),
                   ),
                 ),

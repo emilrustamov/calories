@@ -16,11 +16,11 @@ class Hello extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 25.0),
+            padding: EdgeInsets.only(bottom: h * 0.03),
             child: Stack(
               children: <Widget>[
                 Container(
-                  height: h* 0.5,
+                  height: h * 0.5,
                   width: w * 1,
                   decoration: BoxDecoration(
                     color: lightGreen,
@@ -31,7 +31,7 @@ class Hello extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 100,
+                  top: h * 0.128,
                   left: w * 0.23,
                   child: SvgPicture.asset("images/hello.svg"),
                 )
@@ -41,7 +41,7 @@ class Hello extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: EdgeInsets.symmetric(vertical: h * 0.02),
                 child: Text(
                   "Управляй своим \n питанием с легкостью!",
                   textAlign: TextAlign.center,
@@ -57,7 +57,7 @@ class Hello extends StatelessWidget {
               ),
             ],
           ),
-         Button(context, w, Auth(), "Начать")
+          Button(context, w, h, const Auth(), "Начать")
         ],
       ),
     );

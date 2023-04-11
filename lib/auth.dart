@@ -15,7 +15,6 @@ class _AuthState extends State<Auth> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    bool isSelected = false;
     return Scaffold(
       backgroundColor: lightGreen,
       appBar: AppBar(
@@ -41,18 +40,16 @@ class _AuthState extends State<Auth> {
                   padding: EdgeInsets.only(left: w * 0.06),
                   child: const Text(
                     "Как Вас зовут",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
                 ),
                 Container(
                   width: w * 0.9,
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: h * 0.01),
                   child: TextField(
-                    maxLength: 12,
-                    obscureText: false,
-                    decoration: inputTextfield("Ваше имя")
-                  ),
+                      maxLength: 12,
+                      obscureText: false,
+                      decoration: inputTextfield("Ваше имя", w, h)),
                 ),
               ],
             ),
@@ -70,12 +67,12 @@ class _AuthState extends State<Auth> {
                 ),
                 Container(
                   width: w * 0.9,
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: h * 0.01),
                   child: TextField(
                     keyboardType: TextInputType.number,
                     maxLength: 3,
                     obscureText: false,
-                    decoration: inputTextfield("175см"),
+                    decoration: inputTextfield("175см", w, h),
                   ),
                 ),
               ],
@@ -94,44 +91,46 @@ class _AuthState extends State<Auth> {
                 ),
                 Container(
                   width: w * 0.9,
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: h * 0.01),
                   child: TextField(
-                    keyboardType: TextInputType.number,
-                    maxLength: 3,
-                    obscureText: false,
-                    decoration: inputTextfield("75кг")
-                  ),
+                      cursorColor: green,
+                      keyboardType: TextInputType.number,
+                      maxLength: 3,
+                      obscureText: false,
+                      decoration: inputTextfield("75кг", w, h)),
                 ),
               ],
             ),
           ),
           Row(
             children: [
-               Container(
-                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                 margin: const EdgeInsets.only(left: 20, right: 20),
-                 decoration: BoxDecoration(
-                   color: green,
-                   borderRadius: const BorderRadius.only(
-                     topLeft: Radius.elliptical(30, 30),
-                     bottomRight: Radius.elliptical(30, 30),
-                   ),
-                 ),
-                 child: Container(
-                   width: w* 0.13,
-                   height: 50,
-                   alignment: Alignment.center,
-                   child: const Text(
-                     "М",
-                     style: TextStyle(
-                         fontSize: 16,
-                         fontWeight: FontWeight.w400,
-                         color: Colors.white),
-                   ),
-                 ),
-               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: EdgeInsets.symmetric(
+                    horizontal: w * 0.02, vertical: h * 0.01),
+                margin: EdgeInsets.symmetric(horizontal: w * 0.05),
+                decoration: BoxDecoration(
+                  color: green,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.elliptical(30, 30),
+                    bottomRight: Radius.elliptical(30, 30),
+                  ),
+                ),
+                child: Container(
+                  width: w * 0.13,
+                  height: h * 0.06,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "М",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: w * 0.02, vertical: h * 0.01),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -154,48 +153,43 @@ class _AuthState extends State<Auth> {
               ),
             ],
           ),
-          Button(context, w, TimeTable(), "Далее"),
+          ButtonReplace(context, w, h, const TimeTable(), "Далее"),
         ],
       ),
     );
   }
 
-  
-
-  InputDecoration inputTextfield(String textlabel) {
+  InputDecoration inputTextfield(String textlabel, h, w) {
     return InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 25),
-                    filled: true,
-                    fillColor: Colors.white,
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)),
-                    ),
-                    errorBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.red,
-                      ),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: green,
-                      ),
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)),
-                    ),
-                    labelText: textlabel,
-                  );
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      contentPadding:
+          EdgeInsets.symmetric(vertical: h * 0.025, horizontal: w * 0.035),
+      filled: true,
+      fillColor: Colors.white,
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.white,
+        ),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+      ),
+      errorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2,
+          color: Colors.red,
+        ),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2,
+          color: green,
+        ),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+      ),
+      labelText: textlabel,
+    );
   }
 }
