@@ -34,45 +34,77 @@ class _SearchState extends State<Search> {
                 setState(() {});
               },
             ),
-            bottom: TabBar(
-              labelColor: green,
-              isScrollable: true,
-              tabs: const [
-                Tab(
-                  text: "Все",
-                ),
-                Tab(
-                  text: "Овощи",
-                ),
-                Tab(
-                  text: "Фрукты",
-                ),
-                Tab(
-                  text: "Напитки",
-                ),
-                Tab(
-                  text: "Сладкое",
-                ),
-                Tab(
-                  text: "Запрещенка",
-                ),
-              ],
-            ),
+            bottom: PreferredSize(
+                preferredSize: Size.fromHeight(50),
+                child: TabBar(
+                    padding: EdgeInsets.only(left: w * 0.01),
+                    isScrollable: true,
+                    labelColor: Colors.white,
+                    unselectedLabelColor: black,
+                    indicator: BoxDecoration(
+                        color: black,
+                        borderRadius: BorderRadius.circular(20)),
+                    tabs: [
+                      Container(
+                        height: h * 0.05,
+                        width: w * 0.27,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          "Все",
+                        ),
+                      ),
+                      Container(
+                        height: h * 0.05,
+                        width: w * 0.27,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: const Text(
+                          "Овощи",
+                        ),
+                      ),
+                      Container(
+                        height: h * 0.05,
+                        width: w * 0.27,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          "Фрукты",
+                        ),
+                      ),
+                      Container(
+                        height: h * 0.05,
+                        width: w * 0.27,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          "Напитки",
+                        ),
+                      ),
+                    ])),
           ),
           body: TabBarView(
             children: <Widget>[
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Банан"),
-                      Text("20гр"),
-                      Text("20ккал"),
-                      smallButton(),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(top:50.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text("Банан", style: TextStyle(fontWeight:FontWeight.w500, fontSize: 18),),
+                       const Text("20гр", style: TextStyle(fontWeight:FontWeight.w500, fontSize: 18),),
+                        Text("20ккал", style: TextStyle(fontWeight:FontWeight.w400, fontSize: 18, color: green),),
+                        smallButton(),
+                      ],
+                    ),
                   ),
-                  Button(context, w, h, zapis(page: 1), "Записать")
+                  ButtonReplace(context, w, h, zapis(page: 1), "Записать")
                 ],
               ),
             ],
@@ -94,7 +126,7 @@ class SearchBox extends StatelessWidget {
       height: 30,
       alignment: Alignment.centerLeft,
       color: Colors.white,
-      child: TextField(
+      child: TextField( cursorColor: black,
         decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: black),

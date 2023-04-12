@@ -1,4 +1,5 @@
 import 'package:callories/global.dart';
+import 'package:callories/search.dart';
 import 'package:callories/timetable.dart';
 import 'package:callories/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class _zapisState extends State<zapis> {
           //     ],
           //   ),
           // ),
-          Button(context, w, h, const TimeTable(), "Готово"),
+          ButtonReplace(context, w, h, const Search(), "Готово"),
         ],
       ),
     );
@@ -152,7 +153,7 @@ class Dialog extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => const TimeTable()))
+                        builder: (BuildContext context) => const Search()))
               },
               child: const Text('Да'),
             ),

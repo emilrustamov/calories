@@ -57,7 +57,7 @@ class Hello extends StatelessWidget {
               ),
             ],
           ),
-          Button(context, w, h, const Auth(), "Начать")
+          ButtonReplace(context, w, h, const Auth(), "Начать")
         ],
       ),
     );

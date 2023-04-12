@@ -236,7 +236,7 @@ class _TimeTableState extends State<TimeTable> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Прием пищи ${index + 1}"),
+                            Text("Прием пищи ${index + 1}", style: TextStyle(color: green, fontWeight:FontWeight.w400, fontSize: 16),),
                             smallButton(),
                           ],
                         ),

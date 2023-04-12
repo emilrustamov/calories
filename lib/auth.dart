@@ -102,8 +102,10 @@ class _AuthState extends State<Auth> {
               ],
             ),
           ),
+           
           Row(
             children: [
+              
               Container(
                 padding: EdgeInsets.symmetric(
                     horizontal: w * 0.02, vertical: h * 0.01),
